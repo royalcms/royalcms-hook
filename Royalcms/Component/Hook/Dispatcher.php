@@ -72,6 +72,12 @@ class Dispatcher
     protected function parseListenerWithAcceptedArgs($listener)
     {
         if (is_array($listener)) {
+            if (! isset($listener[1])) {
+                $listener[1] = null;
+            }
+            if (! isset($listener[2])) {
+                $listener[2] = null;
+            }
             list($class, $priority, $accepted_args) = $listener;
             $priority = $priority ?: 10;
             $accepted_args = $accepted_args ?: 1;
